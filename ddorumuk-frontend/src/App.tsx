@@ -1,25 +1,17 @@
-import './App.css'
-import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
-import HomeComponent from '@/pages/home';
-function Layout() {
-	return (
-		<div>
-			<h1>My Website</h1>
-			<Outlet />
-		</div>
-	);
-}
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import routes from '@/router/index';
+
+const AppRoutes = () => {
+  const element = useRoutes(routes);
+  return element;
+};
 
 function App() {
-	return (
-		<Router>
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route index element={<HomeComponent />} />
-				</Route>
-			</Routes>
-		</Router>
-	);
+  return (
+    <Router>
+      <AppRoutes />
+    </Router>
+  );
 }
 
-export default App
+export default App;

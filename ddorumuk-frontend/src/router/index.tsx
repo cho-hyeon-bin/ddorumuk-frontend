@@ -1,14 +1,16 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomeComponent from '@/pages/home';
+import SelectComponent from '@/pages/select';
+import Layout from '@/components/layout';
 
-function AppRouter() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomeComponent />} />
-      </Routes>
-    </Router>
-  );
-}
+const routes = [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomeComponent /> },
+      { path: 'select', element: <SelectComponent /> },
+    ],
+  },
+];
 
-export default AppRouter;
+export default routes;
